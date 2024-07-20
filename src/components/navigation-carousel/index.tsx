@@ -1,7 +1,7 @@
 import BannersCarousel from '@/components/navigation-carousel/ui/banners-carousel';
-import { BannersCarouselItem } from '@/components/navigation-carousel/types';
+import { BannersCarouselItemProps } from '@/components/navigation-carousel/ui/banners-carousel-item';
 
-const navigationCarouselItems: BannersCarouselItem[] = [
+const navigationCarouselItems: BannersCarouselItemProps[] = [
     {
         title: 'Первый слайд',
         href: '/1',

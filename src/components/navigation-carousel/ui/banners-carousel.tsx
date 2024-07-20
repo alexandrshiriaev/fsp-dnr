@@ -5,21 +5,20 @@ import {
     Carousel,
     CarouselApi,
     CarouselContent,
-    CarouselItem,
-} from '@/components/ui/carousel';
+} from '@/components/shadcnui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
-import Link from 'next/link';
 
-import { BannersCarouselItem } from '@/components/navigation-carousel/types';
 import DotCarouselNavigationGroup from '@/components/navigation-carousel/ui/dot-carousel-navigation-group';
+import {
+    BannersCarouselItem,
+    BannersCarouselItemProps,
+} from '@/components/navigation-carousel/ui/banners-carousel-item';
 
 type BannersCarouselProps = {
-    items: Array<BannersCarouselItem>;
+    items: BannersCarouselItemProps[];
 };
 
 export default function BannersCarousel({ items }: BannersCarouselProps) {
-    console.log(items);
-
     const [api, setApi] = useState<CarouselApi>();
     const [current, setCurrent] = useState(0);
     const [count, setCount] = useState(0);
@@ -45,20 +44,13 @@ export default function BannersCarousel({ items }: BannersCarouselProps) {
             }}
             plugins={[
                 Autoplay({
-                    delay: 3000,
+                    delay: 6000,
                 }),
             ]}
         >
             <CarouselContent className="ml-0">
                 {items.map(item => (
-                    <CarouselItem key={item.href} className="px-2">
-                        <Link
-                            href={item.href}
-                            className="w-full h-[200px] rounded-2xl px-2 bg-slate-800 block"
-                        >
-                            <span className="text-white">{item.title}</span>
-                        </Link>
-                    </CarouselItem>
+                    <BannersCarouselItem key={item.href} {...item} />
                 ))}
             </CarouselContent>
             <DotCarouselNavigationGroup
